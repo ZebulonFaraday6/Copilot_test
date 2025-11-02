@@ -49,8 +49,11 @@ class CalculatorEngine:
         # Replace common mathematical notation
         expr = expression.replace('^', '**')
         expr = expr.replace('π', str(math.pi))
-        expr = expr.replace('e', str(math.e))
         expr = expr.replace('Ans', str(self.ans))
+        
+        # Replace 'e' constant carefully (avoid replacing 'e' in function names like 'exp')
+        import re
+        expr = re.sub(r'\be\b', str(math.e), expr)
         
         # Create safe evaluation environment
         safe_dict = {

@@ -405,10 +405,10 @@ class CasioCalculatorGUI:
                 result_cubic.insert(tk.END, f"Solutions:\n")
                 for i, x in enumerate([x1, x2, x3], 1):
                     if isinstance(x, complex) and x.imag != 0:
-                        result_cubic.insert(tk.END, f"x₃ = {x.real:.10g} + {x.imag:.10g}i\n".replace('₃', str(i)))
+                        result_cubic.insert(tk.END, f"x{i} = {x.real:.10g} + {x.imag:.10g}i\n")
                     else:
                         val = x.real if isinstance(x, complex) else x
-                        result_cubic.insert(tk.END, f"x₃ = {val:.10g}\n".replace('₃', str(i)))
+                        result_cubic.insert(tk.END, f"x{i} = {val:.10g}\n")
             except Exception as e:
                 messagebox.showerror("Error", str(e))
         

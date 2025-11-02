@@ -169,10 +169,10 @@ class CasioCalculatorCLI:
             print("\nSolutions:")
             for i, x in enumerate([x1, x2, x3], 1):
                 if isinstance(x, complex) and abs(x.imag) > 1e-10:
-                    print(f"x₃ = {x.real:.10g} + {x.imag:.10g}i".replace('₃', str(i)))
+                    print(f"x{i} = {x.real:.10g} + {x.imag:.10g}i")
                 else:
                     val = x.real if isinstance(x, complex) else x
-                    print(f"x₃ = {val:.10g}".replace('₃', str(i)))
+                    print(f"x{i} = {val:.10g}")
             
         except Exception as e:
             print(f"Error: {str(e)}")

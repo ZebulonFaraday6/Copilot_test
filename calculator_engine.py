@@ -52,7 +52,6 @@ class CalculatorEngine:
         expr = expr.replace('Ans', str(self.ans))
         
         # Replace 'e' constant carefully (avoid replacing 'e' in function names like 'exp')
-        import re
         expr = re.sub(r'\be\b', str(math.e), expr)
         
         # Create safe evaluation environment
@@ -71,7 +70,7 @@ class CalculatorEngine:
             'acosh': math.acosh,
             'atanh': math.atanh,
             'sqrt': math.sqrt,
-            'cbrt': lambda x: x ** (1/3) if x >= 0 else -((-x) ** (1/3)),
+            'cbrt': lambda x: math.copysign(abs(x) ** (1/3), x),
             'exp': math.exp,
             'ln': math.log,
             'log': math.log10,
